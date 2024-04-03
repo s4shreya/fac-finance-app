@@ -1,0 +1,5 @@
+Notes for understanding concepts used in project
+
+1. Virtual environment is an isolated space where we can work on various python projects separately without affecting the system installed python.
+    and various dependencies and their versions can be isolated for each project.
+2. 
