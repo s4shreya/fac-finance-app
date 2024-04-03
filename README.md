@@ -7,4 +7,5 @@
         >>env/Scripts/activate       // we can use any name instead of env
 3.  Install dependencies
         >>pip install fastapi uvicorn sqlalchemy       // uvicorn works as a server, sqlalchemy is a database toolkit for python
-4.  
+4.  To start the FastAPI application
+        >>uvicorn main:app --reload

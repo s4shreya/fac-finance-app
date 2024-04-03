@@ -4,4 +4,4 @@ Notes for understanding concepts used in project
       and various dependencies and their versions can be isolated for each project.
 2.  Models are tables for SQLite database which we are using as relational database in our application. Our database is going to be the connection
         port from our SQLite application to our FastAPI application
-3.  
+3.  SQLite database is a file structure database that is present within the application unlike postgres or mySQL

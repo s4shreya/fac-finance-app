@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, Depends
-from typing import Annotated
+from typing import Annotated, List
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from database import SessionLocal, engine
@@ -48,3 +48,21 @@ db_dependency = Annotated[Session, Depends(get_database)]
 
 # creates database and its tables, columns automatically when this FastAPI application is created
 models.Base.metadata.create_all(bind=engine)
+
+
+# API endpoints of our application
+
+# post API to store the transaction details on database
+@app.post("/transactions/", response_model=TransactionModel)
+async def create_transaction(transaction: TransactionBase, db: db_dependency):
+    db_transaction = models.Transaction(**transaction.model_dump())
+    db.add(db_transaction)
+    db.commit()
+    db.refresh(db_transaction)
+    return db_transaction
+
+# get API request to retreive all the transaction data
+@app.get("/transactions/", response_model=List[TransactionModel])
+async def read_transactions(db: db_dependency, skip: int = 0, limit: int = 100):
+    transactions = db.query(models.Transaction).offset(skip).limit(limit).all()
+    return transactions
