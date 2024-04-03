@@ -13,7 +13,13 @@ app = FastAPI()
 origins = ["http://localhost:5173"]
 
 # handles CORS policy
-app.add_middleware(CORSMiddleware, allow_origins=origins)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 # creates pydantic model that validates the requests from our react application
