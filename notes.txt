@@ -1,5 +1,7 @@
 Notes for understanding concepts used in project
 
-1. Virtual environment is an isolated space where we can work on various python projects separately without affecting the system installed python.
-    and various dependencies and their versions can be isolated for each project.
-2. 
+1.  Virtual environment is an isolated space where we can work on various python projects separately without affecting the system installed python.
+      and various dependencies and their versions can be isolated for each project.
+2.  Models are tables for SQLite database which we are using as relational database in our application. Our database is going to be the connection
+        port from our SQLite application to our FastAPI application
+3.  SQLite database is a file structure database that is present within the application unlike postgres or mySQL
