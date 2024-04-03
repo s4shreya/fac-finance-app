@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "./api";
+import DisplayTransactions from "./DisplayTransactions";
 
 const App = () => {
   const [transactions, setTransactions] = useState([]);
@@ -127,6 +128,7 @@ const App = () => {
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
+          <DisplayTransactions transactionsList={transactions} />
         </form>
       </div>
     </div>
