@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 # list of allowed origins to connect to our FastAPI application
-origins = ["http://localhost:3000"]
+origins = ["http://localhost:5173"]
 
 # handles CORS policy
 app.add_middleware(CORSMiddleware, allow_origins=origins)
@@ -52,6 +52,7 @@ models.Base.metadata.create_all(bind=engine)
 
 # API endpoints of our application
 
+
 # post API to store the transaction details on database
 @app.post("/transactions/", response_model=TransactionModel)
 async def create_transaction(transaction: TransactionBase, db: db_dependency):
@@ -60,6 +61,7 @@ async def create_transaction(transaction: TransactionBase, db: db_dependency):
     db.commit()
     db.refresh(db_transaction)
     return db_transaction
+
 
 # get API request to retreive all the transaction data
 @app.get("/transactions/", response_model=List[TransactionModel])
